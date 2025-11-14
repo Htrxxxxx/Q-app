@@ -23,7 +23,7 @@ import com.quran.quran_app.security.JwtAuthenticationFilter;
 public class SecurityConfig {
     
     @Autowired
-    private CustomUserDetailsService CuserDetailsService;
+    private CustomUserDetailsService userDetailsService;
     
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(CuserDetailsService);
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
